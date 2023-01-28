@@ -4,6 +4,16 @@
       <v-app-bar-title>
         My Awesome Company
       </v-app-bar-title>
+      <v-spacer></v-spacer>
+      <template v-slot:extension>
+        <v-tabs align-with-title>
+          <v-tab to="/">Main</v-tab>
+          <v-tab to="/catalog">Catalog</v-tab>
+          <v-tab to="/news">News</v-tab>
+          <v-tab to="/delivery">Delivery</v-tab>
+          <v-tab to="/contacts">Contacts</v-tab>
+        </v-tabs>
+      </template>
     </v-app-bar>
     <v-main>
       <router-view/>

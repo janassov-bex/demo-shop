@@ -6,7 +6,7 @@
     max-width="320">
     <v-img
       height="350"
-      src="@/assets/chair.jpg"
+      src="https://picsum.photos/800/800"
     ></v-img>
     <v-card-title>Cool Chair</v-card-title>
     <v-card-subtitle> A brand new chair</v-card-subtitle> 
@@ -15,7 +15,7 @@
       150$
     </v-card-text>
     <v-card-actions >
-      <v-btn class="mx-auto">
+      <v-btn class="mx-auto" to="/catalog/10">
         Buy
       </v-btn>
       <v-btn class="mx-auto">
