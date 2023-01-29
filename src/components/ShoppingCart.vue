@@ -60,11 +60,16 @@
             </v-col>
         </v-row>
         <v-divider class="my-1"></v-divider>
-        <v-row>
+        <v-row v-if="store.items.length > 0">
             <v-col cols="12">
                 <p class="font-weight-black text-h6">
                     Total cost: {{ totalCost }} $
                 </p>
+            </v-col>
+        </v-row>
+        <v-row v-if="store.items.length == 0"> 
+            <v-col>
+                <p> You Should Add to cart some items</p>
             </v-col>
         </v-row>
     </v-container>

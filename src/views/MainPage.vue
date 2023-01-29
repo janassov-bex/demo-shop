@@ -5,7 +5,7 @@
                 <v-parallax  src="https://picsum.photos/1920/1080" height="700" gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)">
                     <v-row align="center" justify="center">
                         <v-col cols="12" class="text-center">
-                            <h1> Welcome to our awesome website! </h1>
+                            <h1 class="primary--text"> Welcome to our awesome website! </h1>
                         </v-col>
                     </v-row>
 
@@ -15,14 +15,11 @@
         </v-row>
         <v-row>
             <v-col cols="12">
-                <masonry-wall :items="items" :ssr-columns="1" :column-width="500" :gap="16">
-                    <template #default="{item}">
-                        <v-card>
-                            <v-card-title>{{ item.title }}</v-card-title>
-                            <v-card-subtitle>{{ item.description }}</v-card-subtitle>
-                        </v-card>
-                    </template>
-                </masonry-wall>
+                <p> Hello this is a demo-site for some furniture company. All orders maked by using this site will be not processed</p>
+                <p>
+
+                </p>
+                <p class="text-h5 mt-12 mb-0"> This there we located</p>
             </v-col>
         </v-row>
         <v-row>
@@ -53,20 +50,6 @@ export default {
     },
     data() {
         return {
-            items: [
-                { title: 'First', description: 'The first item.' },
-                { title: 'Second', description: 'The second item.' },
-                { title: 'Second', description: 'The second item.' },
-                { title: 'Second', description: 'The second item.' },
-                { title: 'Second', description: 'The second item.' },
-                { title: 'Second', description: 'The second item.' },
-                { title: 'Second', description: 'The second item.' },
-                { title: 'Second', description: 'The second item.' },
-                { title: 'Second', description: 'The second item.' },
-                { title: 'Second', description: 'The second item.' },
-                { title: 'Second', description: 'The second item.' },
-                { title: 'Second', description: 'The second item.' },
-            ],
             coords: [
                 43.243357, 76.956166
             ],

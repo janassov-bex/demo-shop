@@ -43,9 +43,6 @@
                         <v-btn class="mx-2" @click="store.addItem(id)">
                             Add to <v-icon>mdi-cart</v-icon>
                         </v-btn>
-                        <v-btn class="mx-2">
-                            <v-icon>mdi-heart-outline</v-icon>
-                        </v-btn>
                     </v-col>
                 </v-row>
                 

@@ -7,6 +7,7 @@ import DeliveryInformation from '@/views/DeliveryInformation.vue'
 import ContactUs from '@/views/Contacts.vue'
 import ProductDetail from '@/views/ProductDetail.vue'
 import NewsPage from '@/views/NewsPage.vue'
+import OrderPage from '@/views/OrderPage.vue'
 
 
 Vue.use(VueRouter)
@@ -47,6 +48,12 @@ const routes = [
     name: 'newspage',
     component: NewsPage
   },
+  {
+    path: '/order',
+    name: 'order',
+    component: OrderPage
+  },
+
 
 ]
 

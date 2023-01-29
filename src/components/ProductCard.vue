@@ -3,11 +3,24 @@
     elevation="4"
     outlined 
     class="mx-4 my-4"
-    max-width="320">
+    max-width="320" min-width="320">
     <v-img
       height="350"
       :src="images[0].src"
-    ></v-img>
+    >
+      <template v-slot:placeholder>
+        <v-row
+          class="fill-height ma-0"
+          align="center"
+          justify="center"
+        >
+          <v-progress-circular
+            indeterminate
+            color="dark lighten-5"
+          ></v-progress-circular>
+        </v-row>
+      </template>
+    </v-img>
     <v-card-title>{{ name }}</v-card-title>
     <v-card-subtitle> {{ shortDescr }}</v-card-subtitle> 
     <v-divider class="mx-4"></v-divider>
@@ -20,9 +33,6 @@
       </v-btn>
       <v-btn class="mx-auto" :to="'/catalog/' + id ">
         Details
-      </v-btn>
-      <v-btn class="mx-auto">
-        <v-icon>mdi-heart-outline</v-icon>
       </v-btn>
     </v-card-actions>
 
