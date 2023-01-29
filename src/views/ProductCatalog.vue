@@ -9,13 +9,13 @@
             </v-col>
             <v-col cols="10">
                 <v-row>
-                    <ProductCard/>
-                    <ProductCard/>
-                    <ProductCard/>
-                    <ProductCard/>
-                    <ProductCard/>
-                    <ProductCard/>
-                    <ProductCard/>
+                    <ProductCard v-for="product in products" :key="product.id"
+                        :id="product.id"
+                        :name="product.name"
+                        :shortDescr="product.shortDescr"
+                        :images="product.images"
+                        :price="product.price"
+                    />
                 </v-row>
             </v-col>
 
@@ -27,13 +27,17 @@
 <script>
 import ProductCard from '@/components/ProductCard.vue';
 import ProductFilters from '@/components/ProductFilters.vue';
+import sampleProducts from '@/data/products'
 
 export default {
     name: 'ProductCatalog',
     components: {
         ProductCard,
         ProductFilters
-    }
+    },
+    data: () => ({
+        products: sampleProducts
+    }),
 
 }
 </script>

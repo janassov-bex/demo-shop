@@ -6,17 +6,20 @@
     max-width="320">
     <v-img
       height="350"
-      src="https://picsum.photos/800/800"
+      :src="images[0].src"
     ></v-img>
-    <v-card-title>Cool Chair</v-card-title>
-    <v-card-subtitle> A brand new chair</v-card-subtitle> 
+    <v-card-title>{{ name }}</v-card-title>
+    <v-card-subtitle> {{ shortDescr }}</v-card-subtitle> 
     <v-divider class="mx-4"></v-divider>
     <v-card-text> 
-      150$
+      {{ price }}
     </v-card-text>
     <v-card-actions >
-      <v-btn class="mx-auto" to="/catalog/10">
+      <v-btn class="mx-auto" @click="store.addItem(id)" >
         Buy
+      </v-btn>
+      <v-btn class="mx-auto" :to="'/catalog/' + id ">
+        Details
       </v-btn>
       <v-btn class="mx-auto">
         <v-icon>mdi-heart-outline</v-icon>
@@ -27,11 +30,21 @@
 </template>
 
 <script>
+  import {store} from '@/store'
   export default {
     name: 'ProductCard',
-
+    props: {
+      id: Number,
+      name: String,
+      shortDescr: String,
+      price: Number,
+      images: Array,
+    },
     data: () => ({
-      
+      store
     }),
+    methods:{
+
+    }
   }
 </script>

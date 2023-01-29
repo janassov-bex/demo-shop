@@ -2,40 +2,29 @@
     <v-container>
         <v-row>
             <v-col cols="12">
-                <h1> Awesome Product</h1>
+                <h1> {{ name }}</h1>
             </v-col>
         </v-row>
         <v-row>
             <v-col cols="6">
-                <lingallery :iid.sync="currentId" :responsive="true" :items="[
-                    {id:'someid1', src: 'https://picsum.photos/1000/800/?image=100', thumbnail: 'https://picsum.photos/64/64/?image=100'},
-                    {id:'someid2', src: 'https://picsum.photos/1000/800/?image=101', thumbnail: 'https://picsum.photos/64/64/?image=101'},
-                    {id:'someid3', src: 'https://picsum.photos/1000/800/?image=102', thumbnail: 'https://picsum.photos/64/64/?image=102'},
-                    {id:'someid4', src: 'https://picsum.photos/1000/800/?image=103', thumbnail: 'https://picsum.photos/64/64/?image=103'},
-                    {id:'someid5', src: 'https://picsum.photos/1000/800/?image=104', thumbnail: 'https://picsum.photos/64/64/?image=104'},
-                ]"/>
+                <lingallery :iid.sync="currentId" :responsive="true" :items="images"/>
             </v-col>
             <v-col cols="6">
                 <v-row>
                     <v-col cols="12">
                         <p class="font-weight-bold text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus convallis lorem vitae sem eleifend, nec.
+                            {{ shortDescr }}
                         </p>
                         <p class="text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Phasellus venenatis auctor erat, et consectetur augue malesuada quis. 
-                            Aliquam in diam eget nulla facilisis egestas ut a nibh. 
-                            Pellentesque ultrices mi quis pellentesque dictum. Aenean interdum turpis nec dictum tincidunt. 
-                            Nullam nec bibendum velit. Duis id sodales mauris, aliquam luctus lorem. 
-                            Nam fringilla fermentum turpis, in laoreet ipsum pretium id. Nullam at interdum sem.
+                            {{ description }}
                         </p>
-                        <p class="text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Phasellus venenatis auctor erat, et consectetur augue malesuada quis. 
-                            Aliquam in diam eget nulla facilisis egestas ut a nibh. 
-                            Pellentesque ultrices mi quis pellentesque dictum. Aenean interdum turpis nec dictum tincidunt. 
-                            Nullam nec bibendum velit. Duis id sodales mauris, aliquam luctus lorem. 
-                            Nam fringilla fermentum turpis, in laoreet ipsum pretium id. Nullam at interdum sem.
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="12">
+                        <p>
+                            <span class="font-weight-bold">Category:</span>
+                            {{ category }}
                         </p>
                     </v-col>
                 </v-row>
@@ -45,13 +34,13 @@
                             Price:
                         </p>
                         <p class="text-h5">
-                            150$
+                            {{price}}$
                         </p>
                     </v-col>
                 </v-row>
                 <v-row>
                     <v-col cols="12">
-                        <v-btn class="mx-2" to="/catalog/10">
+                        <v-btn class="mx-2" @click="store.addItem(id)">
                             Add to <v-icon>mdi-cart</v-icon>
                         </v-btn>
                         <v-btn class="mx-2">
@@ -66,7 +55,39 @@
     
 </template>
 <script>
+import sampleProducts from '@/data/products';
+import {store} from '@/store'
+
 export default {
-    name: 'ProductDetail'
+    name: 'ProductDetail',
+    data: () => ({
+        id: 0,
+        name: '',
+        shortDescr: '',
+        description: '',
+        price: '',
+        images: [],
+        category: '',
+        store
+    }),
+    mounted () {
+        this.id = this.$route.params.id
+        this.getProductByID(this.id)
+
+    },
+    computed: {
+    },
+    methods: {
+        getProductByID (id) {
+            let found = sampleProducts.find(product => product.id == id)
+            this.name = found.name
+            this.shortDescr = found.shortDescr
+            this.description = found.description
+            this.price = found.price
+            this.images = found.images
+            this.category = found.category
+        }
+    }
+
 }
 </script>
