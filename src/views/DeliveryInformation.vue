@@ -24,12 +24,37 @@
                 </p>
             </v-col>
         </v-row>
+        <v-row>
+            <v-col cols="12">
+                <lottie :options="defaultOptions" :height="500" :width="500" v-on:animCreated="handleAnimation"/>
+            </v-col>
+        </v-row>
     </v-container>
     
 </template>
 <script>
+import Lottie from 'vue-lottie';
+import * as animationData from '@/assets/98455-delivery-truck.json';
 
 export default {
-    name: 'DeliveryInformation'
+    name: 'DeliveryInformation',
+    data() {
+      return {
+        defaultOptions: {
+            animationData: animationData,
+            loop: true,
+            utoplay: true
+        },
+        animationSpeed: 2
+      }
+    },
+    components: {
+      'lottie': Lottie
+    },
+    methods: {
+        handleAnimation (anim) {
+            this.anim = anim;
+        },
+    }
 }
 </script>
